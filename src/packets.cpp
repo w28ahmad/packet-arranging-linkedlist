@@ -57,20 +57,28 @@ void List::AddPacket(std::string word, int position){
 
 void List::readList(){
     current = head;
+    std::cout<< "________________OUTPUT_______________\n" << std::endl;
     while(current->word != "/0"){
-        std::cout<< current->word << " " <<current->position <<std::endl;
+        std::cout<< current->word << " ";
         current = current->next;
     }
 }
 
 
 int main(){
-    std::string sentence;
+    std::string word;
+    int position;
+
     List newStream;
-    newStream.AddPacket("how", 2);
-    newStream.AddPacket("Hello", 1);
-    newStream.AddPacket("you", 4);
-    newStream.AddPacket("are", 3);
+
+    while(1){
+        std::cin>> word;
+        if(word == "exit"){
+            break;
+        }
+        std::cin>> position;
+        newStream.AddPacket(word, position);
+    }
     newStream.readList();
     return 0;
 }
